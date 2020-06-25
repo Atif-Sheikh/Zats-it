@@ -5,10 +5,11 @@ import {
   Text,
   StyleSheet,
   Platform,
-  Animated
+  Animated,
+  TouchableOpacity
 } from "react-native";
 import PropTypes from "prop-types";
-import { RectButton } from "react-native-gesture-handler";
+import { RectButton  } from "react-native-gesture-handler";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 
 class ListItem extends Component {
@@ -77,7 +78,8 @@ class ListItem extends Component {
       rightText,
       onPress,
       onLongPress,
-      disabled
+      disabled,
+      onPressText
     } = this.props;
 
     const Component = onPress || onLongPress ? TouchableHighlight : View;
@@ -90,16 +92,17 @@ class ListItem extends Component {
       rightElementContainer,
       rightTextContainer,
       titleStyle,
-      descriptionStyle
+      descriptionStyle,
+      textStyle
     } = styles;
 
     return (
-      <Swipeable
-        ref={this.updateRef}
-        friction={1}
-        renderRightActions={this.renderRightActions}
-      >
-        <Component
+      // <Swipeable
+      //   ref={this.updateRef}
+      //   friction={1}
+      //   renderRightActions={this.renderRightActions}
+      // >
+        <TouchableOpacity
           onPress={onPress}
           onLongPress={onLongPress}
           disabled={disabled}
@@ -120,9 +123,11 @@ class ListItem extends Component {
                   <View />
                 )}
               </View>
-              <View style={rightTextContainer}>
-                {rightText ? <Text>{rightText}</Text> : <View />}
-              </View>
+              <TouchableOpacity onPress={onPressText}>
+                <View style={rightTextContainer}>
+                  {rightText ? <Text style={textStyle}>{rightText}</Text> : <View />}
+                </View>
+              </TouchableOpacity>
 
               {rightElement ? (
                 <View style={rightElementContainer}>{rightElement}</View>
@@ -131,8 +136,8 @@ class ListItem extends Component {
               )}
             </View>
           </View>
-        </Component>
-      </Swipeable>
+        </TouchableOpacity>
+      // </Swipeable>
     );
   }
 }
@@ -167,8 +172,11 @@ const styles = StyleSheet.create({
     flex: 0.4
   },
   rightTextContainer: {
+    flex: 1,
     justifyContent: "center",
-    marginRight: 10
+    alignItems: "center",
+    flexDirection: "row",
+    marginRight: 20
   },
   titleStyle: {
     fontSize: 16
@@ -181,6 +189,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
     justifyContent: "center"
+  },
+  textStyle: {
+    fontSize: 16,
+    color: "#515151",
+    fontWeight: "bold"
   }
 });
 
