@@ -5,7 +5,7 @@ import {
     SafeAreaView,
     ScrollView,
     StyleSheet,
-    Text,
+    StatusBar,
     View,
     Image,
     TextInput,
@@ -116,23 +116,30 @@ export default class Home extends Component {
     render() {
         const { navigation } = this.props;
 
+        Platform.OS === 'android' && StatusBar.setBarStyle('light-content', true);
+        Platform.OS === 'android' && StatusBar.setBackgroundColor("#08a5ed");
+
         return (
-            <SafeAreaView style={styles.container}>
+            <View style={styles.container}>
                 <View
                     style={{
                         paddingLeft: 100,
                         paddingRight: 100,
                         justifyContent: "center",
-                        alignItems: "center"
+                        alignItems: "center",
+                        backgroundColor: "#08a5ed"
                     }}
                 >
-                    {/* <Image
-            source={require("./logo.png")}
-            style={{
-              aspectRatio: 6,
-              resizeMode: "contain"
-            }}
-          /> */}
+                    <Image
+                        source={require("../../zatsit.png")}
+                        style={{
+                            aspectRatio: 6,
+                            resizeMode: "contain",
+                            width: '100%',
+                            height: 40,
+                            marginVertical: 5
+                        }}
+                    />
                 </View>
                 <SearchBar
                     searchPlaceholder={this.state.searchPlaceholder}
@@ -193,7 +200,7 @@ export default class Home extends Component {
                         )
                 }
 
-            </SafeAreaView>
+            </View>
         );
     }
 }

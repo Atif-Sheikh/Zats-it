@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, Item, Input, Icon, Header, Left, Button, Body, Title, Right } from 'native-base';
-import { View, StyleSheet, ListView, TouchableOpacity, Dimensions, ScrollView, Alert } from "react-native";
+import { View, StyleSheet, Platform, StatusBar, TouchableOpacity, Dimensions, ScrollView, Alert } from "react-native";
 import Communications from 'react-native-communications';
 
 const { height } = Dimensions.get('window');
@@ -35,12 +35,16 @@ class ChatRoom extends Component {
     };
 
     render() {
-        const { route: { params: { name, number } } } = this.props;
+        const { route: { params: { name, number } }, navigation } = this.props;
+
+        Platform.OS === 'android' && StatusBar.setBarStyle('light-content', true);
+        Platform.OS === 'android' && StatusBar.setBackgroundColor("#08a5ed");
+
         return (
             <View style={style.container} >
                 <Header style={{ backgroundColor: '#08a5ed' }}>
                     <Left>
-                        <Button onPress={() => {}} transparent>
+                        <Button onPress={() => navigation.goBack()} transparent>
                             <Icon name='arrow-back' />
                         </Button>
                     </Left>
