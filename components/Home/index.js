@@ -142,7 +142,7 @@ export default class Home extends Component {
   sendMessage = () => {
     const {typeText} = this.state;
 
-    if (!typeText || !this.phonenumber(typeText)) {
+    if (!typeText) {
       Alert.alert('Please enter correct details!');
       return;
     }
@@ -152,7 +152,7 @@ export default class Home extends Component {
   addContact = sendMsg => {
     const {typeText} = this.state;
 
-    if (!typeText || !this.phonenumber(typeText)) {
+    if (!typeText) {
       Alert.alert('Please enter correct details!');
       return;
     }
@@ -288,7 +288,7 @@ export default class Home extends Component {
                 value={this.state.contactName}
               /> */}
             </View>
-            <View style={{paddingLeft: 10, paddingRight: 10}}>
+            <View style={{alignItems: 'center', maxHeight: 100, width: '100%'}}>
               <TextInput
                 style={styles.inputStyle}
                 placeholder="Enter number"
@@ -338,12 +338,12 @@ const styles = StyleSheet.create({
   modalView: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: 500,
     width: '95%',
     alignSelf: 'center',
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#fff',
+    flex: 1,
   },
   container: {
     flex: 1,
@@ -356,7 +356,7 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     height: 50,
-    width: 400,
+    width: '90%',
     borderColor: 'gray',
     borderWidth: 2,
     marginTop: 20,
@@ -367,7 +367,7 @@ const styles = StyleSheet.create({
     height: 50,
     marginTop: 20,
     justifyContent: 'center',
-    width: 400,
+    width: '90%',
     alignItems: 'center',
     backgroundColor: '#00BCD4',
     borderRadius: 10,
