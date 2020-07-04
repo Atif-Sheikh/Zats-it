@@ -212,6 +212,14 @@ export default class Home extends Component {
         />
 
         <TouchableOpacity
+          onPress={() => navigation.navigate('Meeting')}
+          style={{position: 'absolute', left: 20, top: 10}}>
+          <Icon
+            style={{opacity: 0.5, fontSize: fontScale * 28}}
+            name="videocam"
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
           onPress={() => this.ShowModalFunction(true, true)}
           style={{position: 'absolute', right: 60, top: 10}}>
           <Icon style={{opacity: 0.5, fontSize: fontScale * 28}} name="call" />

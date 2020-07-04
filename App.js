@@ -4,6 +4,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import Home from './components/Home';
 import Chat from './components/Chat';
+import Meeting from './components/Meeting';
+import Room from './components/Room';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +19,8 @@ function App() {
         initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Chat" component={Chat} />
+        <Stack.Screen name="Meeting" component={Meeting} />
+        <Stack.Screen name="Room" component={Room} />
       </Stack.Navigator>
     </NavigationContainer>
   );
