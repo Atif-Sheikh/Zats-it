@@ -9,6 +9,8 @@ import Room from './components/Room';
 
 const Stack = createStackNavigator();
 
+console.disableYellowBox = true;
+
 function App() {
   return (
     <NavigationContainer>

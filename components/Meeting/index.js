@@ -9,7 +9,7 @@ import {
   Image,
   Platform,
 } from 'react-native';
-
+import {Header, Left, Body, Right, Button, Icon, Title} from 'native-base';
 export default class Meeting extends Component {
   state = {
     pickName: '',
@@ -76,8 +76,22 @@ export default class Meeting extends Component {
   };
 
   render() {
+    const {navigation} = this.props;
     return (
       <View style={{flex: 1, backgroundColor: '#f5f5f0'}}>
+        <Header androidStatusBarColor="#08a5ed" style={{backgroundColor: "#08a5ed"}}>
+          <Left>
+            <Button transparent onPress={() => navigation.goBack()}>
+              <Icon name="arrow-back" />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Audio/Video</Title>
+          </Body>
+          <Right>
+            <Button transparent>{/* <Icon name="menu" /> */}</Button>
+          </Right>
+        </Header>
         <View style={styles.head}>
           <Image style={styles.tinyLogo} source={require('../../zatsit.png')} />
           <Text style={{fontSize: 30, color: 'green'}}>

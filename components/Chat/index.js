@@ -69,7 +69,9 @@ class ChatRoom extends Component {
 
     return (
       <View style={style.container}>
-        <Header style={{backgroundColor: '#08a5ed'}}>
+        <Header
+          androidStatusBarColor="#08a5ed"
+          style={{backgroundColor: '#08a5ed'}}>
           <Left>
             <Button onPress={() => navigation.goBack()} transparent>
               <Icon name="arrow-back" />

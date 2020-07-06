@@ -101,15 +101,19 @@ export default class Home extends Component {
   }
 
   enterChatRoom = contact => {
-    const {navigation} = this.props;
-    const {displayName, phoneNumbers} = contact;
-
-    let number = phoneNumbers[0].number;
-
-    navigation.navigate('Chat', {
-      name: displayName,
-      number,
-    });
+    try {
+      const {navigation} = this.props;
+      const {displayName, phoneNumbers} = contact;
+  
+      let number = phoneNumbers[0].number;
+  
+      navigation.navigate('Chat', {
+        name: displayName,
+        number,
+      });
+    }catch(err) {
+      console.log(err, "ERROR");
+    }
   };
 
   phonenumber = inputtxt => {
@@ -269,7 +273,7 @@ export default class Home extends Component {
                   key={contact.recordID}
                   title={`${contact.givenName} ${contact.familyName}`}
                   description={`${contact.company}`}
-                  onPress={() => this.onPressContact(contact)}
+                  onPress={() => {}}
                   // onPress={() => navigation.navigate('Chat')}
                   onDelete={() =>
                     Contacts.deleteContact(contact, () => {
